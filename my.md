@@ -45,7 +45,7 @@ For now, this PR **does not** include running of tests with top plugins (WooComm
    1. Start the run.
 1. Go to the workflow run you started.
 1. Wait for the _Test WooCommerce update_ job to finish. It runs the `update-woocommerce.spec.js` E2E test against the Release Smoke test site to see update failures early on.
-<!-- Insert image here -->
+   <!-- Insert image here -->
 1. Go to [WooCommerce Test Reports > Smoke Tests on Releases](https://woocommerce.github.io/woocommerce-test-reports/release/). The WooCommerce version number you entered earlier should appear on the list. If not, wait for 1-2 more minutes to give GitHub Pages more time to upload the new report from _Test WooCommerce update_ job.
 1. Click on the version number to expand it.
 1. In the _WP Latest_ row:
@@ -55,29 +55,29 @@ For now, this PR **does not** include running of tests with top plugins (WooComm
       1. It's fine if you see `can run the database update` marked as "skipped" because the WC database version in our Release Smoke Test site is already the latest.
    1. Verify the "API" column using these steps:
       1. You should see the "API" text to be grayed out for now because the API tests haven't finished yet. Same with the other "E2E" and "API" tests of other environments in the list.
-      <!-- Insert image here -->
+         <!-- Insert image here -->
 1. We will now verify if the previous 2 versions of WordPress were correctly obtained. Go back to the `Smoke test release` run.
 1. Wait for the _Get WP L-1 & L-2 version numbers_ job to finish, if it hasn't yet.
 1. Click _Get WP L-1 & L-2 version numbers_ to see its steps.
 1. Click the step _Get version numbers_. It should print the correct L-1 and L-2 versions obtained from the [WordPress.org API version check endpoint](https://api.wordpress.org/core/version-check/1.7/). Verify that they're correct.
-<!-- Insert image here -->
+   <!-- Insert image here -->
 1. Now, verify if the obtained PHP versions were correct. Click on any of the _Test against PHP X.X_ jobs.
 1. Expand the _Verify PHP version_ step. Verify that the `PHP version found in WP Env environment` is correct when compared to the `Expected PHP version` as shown below.
-<!-- Insert image here -->
+   <!-- Insert image here -->
 1. To verify that the tests ran on the WP L-1 and L-2 versions, click on any of the _Test against WP Latest-X_ jobs.
 1. Look for the step _Verify environment details_ and click to expand it. This step basically runs shell commands that print certain environment details like the WordPress version installed.
 1. Verify that the printed WP version is correct.
-<!-- Insert image here -->
+   <!-- Insert image here -->
 1. Still under the _Verify environment details_ step, verify that the installed WooCommerce version is the one that you selected earlier.
-<!-- Insert image here -->
+   <!-- Insert image here -->
 1. Wait for all the jobs to finish.
 1. Go back to [WooCommerce Test Reports > Smoke Tests on Releases](https://woocommerce.github.io/woocommerce-test-reports/release/) and expand the WooCommerce version you chose.
 1. You should see the table filled up now with status icons, except for `PHP 8.0` because it's already covered by `WP Latest` which ran against the Release Smoke Test site, which has PHP 8.0. Refer to the "Legend" section to see what each icon means.
-<!-- Insert image here -->
+   <!-- Insert image here -->
 1. In the _"WP Latest"_ row, click on the "E2E" link again. You should now see the Allure report of all tests, including the `update-woocommerce.spec.js` test you saw earlier.
 1. Click on the E2E and API links of other rows to see if you're taken to the correct Allure report.
 1. In the Allure report, verify the correctness of the following details:
-<!-- Insert image here -->
+   <!-- Insert image here -->
 
 #### Scenario 2: Test using an invalid WooCommerce release version as input
 
@@ -92,7 +92,7 @@ For now, this PR **does not** include running of tests with top plugins (WooComm
    1. The _"Get WooCommerce release tag"_ job fails
    1. All the other jobs did not execute.
    1. Under the _"Validate tag"_ step, the error `release not found` is printed.
-   <!-- Insert image here -->
+      <!-- Insert image here -->
 
 #### Scenario 3: Test using an valid WooCommerce release version, but does not have a `woocommerce.zip` release asset
 
@@ -107,7 +107,7 @@ For now, this PR **does not** include running of tests with top plugins (WooComm
    1. The _"Get WooCommerce release tag"_ job fails.
    1. All the other jobs did not execute.
    1. The _"Verify woocommerce.zip asset"_ step fails because there's no woocommerce.zip found
-   <!-- Insert image here -->
+      <!-- Insert image here -->
 
 ### Other information:
 
